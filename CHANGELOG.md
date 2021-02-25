@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.2.0](https://github.com/picq/automation-playground/compare/v1.1.1...v1.2.0) (2021-02-25)
+
+
+### Bug Fixes
+
+* **app:** removed not used file ([6222329](https://github.com/picq/automation-playground/commit/622232953d36ea90b51782593f8a06c8b5141355))
+
+
+### Features
+
+* **update types for sharable config:** types ([7a9a41e](https://github.com/picq/automation-playground/commit/7a9a41e1b6a3f8f083b7f43320d97e16e318e4ff))
+
 ## [1.1.1](https://github.com/picq/automation-playground/compare/v1.1.0...v1.1.1) (2021-02-25)
 
 
