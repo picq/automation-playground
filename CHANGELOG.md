@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/picq/automation-playground/compare/v1.1.0...v1.1.1) (2021-02-25)
+
+
+### Bug Fixes
+
+* **app:** just add another console log ([79aa1f5](https://github.com/picq/automation-playground/commit/79aa1f594345e9b908111e65b5efe9c8fac7dae4))
+
 # [1.1.0](https://github.com/picq/automation-playground/compare/v1.0.0...v1.1.0) (2021-02-25)
 
 
