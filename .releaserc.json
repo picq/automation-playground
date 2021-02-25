@@ -1,22 +1,50 @@
 {
-  "preset": "conventionalcommits",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
+      "preset": "conventionalcommits",
       "releaseRules": [
-        { "release": "major" , "breaking": true },
-        { "release": "minor", "type": "feat" },
-        { "release": "patch", "type": "fix" },
+        { "breaking": true, "release": "major" },
+        { "type": "feat",  "release": "minor" },
+        { "type": "fix", "release": "patch" },
+        { "type": "docs", "scope":"*README*", "release": "patch" },
+        { "type": "refactor", "release": "patch" },
+        { "type": "style", "release": "patch" },
         { "scope": "no-release", "release": false },
         { "type": "*", "release": "patch" }
-      ]
+      ],
+      "parserOpts": {
+        "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+      }
     }],
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/changelog", { "changelogTitle": "# Changelog"} ],
-    ["@semantic-release/npm", { "npmPublish": false }],
-    ["@semantic-release/github", {
-      "failTitle": true,
-      "addReleases": "bottom"
+    ["@semantic-release/exec", {
+      "prepareCmd": "sed -i \"s/APP_VERSION = '*.*.*'/APP_VERSION = '${nextRelease.version}'/g\" src/app.py"
     }],
-    ["@semantic-release/git", { "message": "chore(release): Release v${nextRelease.version} [skip-ci]" }]
+    ["@semantic-release/changelog", {
+      "changelogFile": "CHANGELOG.md",
+      "changelogTitle": "# Changelog"
+    }],
+    ["@semantic-release/git", {
+      "assets": ["src/app.py", "CHANGELOG.md"],
+      "message": "chore(release): Release v${nextRelease.version} [skip-ci]"
+    }],
+    ["@semantic-release/github", {
+      "labels": ["build failing"],
+      "addReleases": "bottom",
+      "assets": [{
+        "path": "src/app.py",
+        "label": "app - python"
+      }]
+    }],
+    [
+      "semantic-release-slack-bot",
+      {
+        "packageName": "automation-playground",
+        "markdownReleaseNotes": true,
+        "notifyOnSuccess": true,
+        "notifyOnFail": false,
+        "slackWebhookEnVar": "SLACK_WEBHOOK_URL"
+      }
+    ]
   ]
 }
