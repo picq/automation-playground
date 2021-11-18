@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/picq/automation-playground/compare/v1.2.0...v1.2.1) (2021-11-18)
+
+
+### Bug Fixes
+
+* **readme:** update readme ([896aa77](https://github.com/picq/automation-playground/commit/896aa7771b0c0d244a9bcdabf50e097878160d8f))
+
 # [1.2.0](https://github.com/picq/automation-playground/compare/v1.1.1...v1.2.0) (2021-02-25)
 
 
